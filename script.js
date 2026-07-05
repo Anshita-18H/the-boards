@@ -20,7 +20,7 @@ const SUPABASE_KEY = "sb_publishable_Ir7lD1H9T4IYFrqMxDUzfA__7_mbmj2";
 
 // This creates a "client" object we use to talk to the database.
 // createClient() comes from the Supabase library loaded in index.html.
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // EmailJS config — fill these in once you've created your account (see setup guide).
 const EMAILJS_PUBLIC_KEY = "PASTE_YOUR_PUBLIC_KEY_HERE";
@@ -38,7 +38,7 @@ let opportunities = [];
 // "async function" means this function can "await" (pause for) slow operations
 // like a network request, without freezing the rest of the page.
 async function loadOpportunities() {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from('opportunities')
     .select('*')
     .order('id', { ascending: true });
@@ -160,7 +160,7 @@ document.getElementById("submitForm").addEventListener("submit", async function(
   // Insert the new row into the real Supabase table.
   // .select() at the end asks Supabase to hand back the row it just created
   // (including the auto-generated id), so we can add it to our local list immediately.
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from('opportunities')
     .insert([newEntry])
     .select();
