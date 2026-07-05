@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Boards — Off-Campus Opportunities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="board-header">
+    <div class="eyebrow">Departures for students like us</div>
+    <h1>THE BOARDS</h1>
+    <p class="tagline">Off-campus internships and programs — curated for students outside the IIT/NIT circuit. No fake FAANG-only lists. Just the ones you can actually get.</p>
+  </header>
+
+  <div class="control-bar">
+    <div>
+      <label for="filterType">Type</label>
+      <select id="filterType"></select>
+    </div>
+    <div>
+      <label for="filterYear">Eligibility</label>
+      <select id="filterYear"></select>
+    </div>
+    <div>
+      <label for="filterMode">Mode</label>
+      <select id="filterMode"></select>
+    </div>
+    <span class="count" id="resultCount"></span>
+    <button class="add-btn" id="toggleFormBtn">+ Add an opportunity</button>
+  </div>
+
+  <main>
+
+    <!-- Submit panel: hidden until the button above is clicked -->
+    <div class="submit-panel" id="submitPanel">
+      <h2>Know one we're missing?</h2>
+      <form id="submitForm">
+        <div class="form-grid">
+          <div>
+            <label for="f-company">Company / Org</label>
+            <input type="text" id="f-company" required>
+          </div>
+          <div>
+            <label for="f-program">Program / Role name</label>
+            <input type="text" id="f-program" required>
+          </div>
+          <div>
+            <label for="f-type">Type</label>
+            <select id="f-type">
+              <option>Internship</option>
+              <option>Program + Stipend</option>
+              <option>Free program + certificate</option>
+              <option>Aggregator</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-mode">Mode</label>
+            <select id="f-mode">
+              <option>Remote</option>
+              <option>Hybrid</option>
+              <option>On-site</option>
+              <option>Varies</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-year">Eligibility (year)</label>
+            <input type="text" id="f-year" placeholder="e.g. 1st/2nd year">
+          </div>
+          <div>
+            <label for="f-stipend">Stipend / Pay</label>
+            <input type="text" id="f-stipend" placeholder="e.g. Unpaid, or ₹20,000/month">
+          </div>
+          <div class="full">
+            <label for="f-link">Apply link</label>
+            <input type="url" id="f-link" placeholder="https://..." required>
+          </div>
+          <div class="full">
+            <label for="f-notes">Notes (anything useful to know)</label>
+            <textarea id="f-notes" rows="2"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Add to the board</button>
+        <div class="confirm-msg" id="confirmMsg">Added — thanks for contributing!</div>
+      </form>
+    </div>
+
+    <!-- Listings render here via JS -->
+    <div id="listings"></div>
+
+  </main>
+
+  <footer>MADE BY A STUDENT, FOR STUDENTS · NOT AFFILIATED WITH ANY COMPANY LISTED</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

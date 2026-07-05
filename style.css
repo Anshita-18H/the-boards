@@ -1,0 +1,280 @@
+/* ============================================
+     DESIGN TOKENS
+     Concept: an airport departures board.
+     Opportunities = flights. Deadlines = boarding windows.
+     Deep navy board, amber split-flap text, monospace data.
+     ============================================ */
+  :root {
+    --board-navy: #0d1b2a;
+    --board-navy-deep: #060f18;
+    --flap-amber: #ffb703;
+    --flap-amber-dim: #8a6a1f;
+    --paper: #f4f2ec;
+    --ink: #17212b;
+    --ink-soft: #5b6672;
+    --line: #d8d4c8;
+    --ok-green: #2a9d5c;
+
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'Work Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- HEADER: the board marquee ---------- */
+  header.board-header {
+    background: var(--board-navy);
+    background-image: linear-gradient(180deg, var(--board-navy) 0%, var(--board-navy-deep) 100%);
+    color: var(--flap-amber);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 6px solid var(--flap-amber);
+  }
+
+  .board-header .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    color: var(--flap-amber-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .board-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    letter-spacing: 0.05em;
+    margin: 0 0 0.75rem;
+    text-shadow: 0 0 12px rgba(255,183,3,0.35);
+  }
+
+  .board-header p.tagline {
+    font-family: var(--font-body);
+    color: #cfd8e3;
+    max-width: 40rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- FILTER BAR: looks like board control switches ---------- */
+  .control-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 1.5rem;
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .control-bar label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a9b4c0;
+    margin-right: 0.4rem;
+  }
+
+  .control-bar select {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: 3px;
+    border: 1px solid #3a4a5a;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .control-bar .count {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--flap-amber);
+    margin-left: auto;
+  }
+
+  .control-bar button.add-btn {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: var(--flap-amber);
+    color: var(--ink);
+    border: none;
+    padding: 0.55rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .control-bar button.add-btn:hover { transform: translateY(-1px); }
+
+  /* ---------- LISTINGS: the board rows ---------- */
+  main {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .board-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr 0.9fr 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--flap-amber);
+    padding: 0.9rem 1rem;
+    margin-bottom: 0.6rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+  }
+
+  .board-row .company {
+    font-weight: 700;
+    font-family: var(--font-body);
+  }
+  .board-row .company .program-name {
+    display: block;
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    margin-top: 0.15rem;
+  }
+
+  .board-row .tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    background: #eef1f4;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .tag.mode-remote { background: #e6f4ea; color: var(--ok-green); }
+  .tag.mode-hybrid { background: #fff3e0; color: #b5670a; }
+  .tag.mode-onsite { background: #f0e9f9; color: #6b3fa0; }
+
+  .board-row .stipend { font-family: var(--font-display); font-size: 0.8rem; }
+  .board-row .deadline { font-size: 0.8rem; color: var(--ink-soft); }
+
+  .board-row a.apply-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--board-navy);
+    text-decoration: none;
+    border: 1.5px solid var(--board-navy);
+    padding: 0.4rem 0.75rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .board-row a.apply-link:hover { background: var(--board-navy); color: var(--flap-amber); }
+
+  .board-row .notes-line {
+    grid-column: 1 / -1;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding-top: 0.4rem;
+    margin-top: 0.4rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--ink-soft);
+    font-family: var(--font-display);
+  }
+
+  /* ---------- SUBMIT FORM (shown/hidden as a panel) ---------- */
+  .submit-panel {
+    display: none;
+    background: #fff;
+    border: 2px dashed var(--flap-amber-dim);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .submit-panel.open { display: block; }
+
+  .submit-panel h2 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-top: 0;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .form-grid .full { grid-column: 1 / -1; }
+
+  .form-grid label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--ink-soft);
+  }
+
+  .form-grid input, .form-grid select, .form-grid textarea {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+  }
+
+  .submit-panel button.submit-btn {
+    margin-top: 1rem;
+    background: var(--ok-green);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+
+  .confirm-msg {
+    display: none;
+    margin-top: 0.75rem;
+    color: var(--ok-green);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    font-family: var(--font-display);
+  }
+
+  /* ---------- MOBILE: stack the board rows ---------- */
+  @media (max-width: 720px) {
+    .board-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .board-row .company { grid-column: 1 / -1; }
+    .board-row a.apply-link { grid-column: 1 / -1; text-align: center; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
