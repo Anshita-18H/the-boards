@@ -23,9 +23,9 @@ const SUPABASE_KEY = "sb_publishable_Ir7lD1H9T4IYFrqMxDUzfA__7_mbmj2";
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // EmailJS config — fill these in once you've created your account (see setup guide).
-const EMAILJS_PUBLIC_KEY = "PASTE_YOUR_PUBLIC_KEY_HERE";
-const EMAILJS_SERVICE_ID = "PASTE_YOUR_SERVICE_ID_HERE";
-const EMAILJS_TEMPLATE_ID = "PASTE_YOUR_TEMPLATE_ID_HERE";
+const EMAILJS_PUBLIC_KEY = "X8rurEPBngYpH4b8a";
+const EMAILJS_SERVICE_ID = "service_e05oikl";
+const EMAILJS_TEMPLATE_ID = "template_6jrh3mr";
 if (window.emailjs) {
   emailjs.init(EMAILJS_PUBLIC_KEY);
 }
@@ -176,7 +176,7 @@ document.getElementById("submitForm").addEventListener("submit", async function(
 
   // Send yourself an email notification, if EmailJS is set up.
   // If you haven't filled in the EMAILJS_ values above yet, this quietly does nothing.
-  if (window.emailjs && EMAILJS_SERVICE_ID !== "PASTE_YOUR_SERVICE_ID_HERE") {
+  if (window.emailjs && EMAILJS_SERVICE_ID !== "PASTE_YOUR_SERVICE_ID_HERE" && EMAILJS_SERVICE_ID) {
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
       company: newEntry.company,
       program: newEntry.program,
